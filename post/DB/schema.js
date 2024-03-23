@@ -15,8 +15,8 @@ const postSchema = new mongoose.Schema({
   },
   author: {
     type: String,
-    ref: "User",
-    required: true,
+    default: "65f2d50969627502866b8b03",
+    // required: true,
   },
   publishDate: {
     type: Date,
@@ -32,6 +32,11 @@ const postSchema = new mongoose.Schema({
     // required: true,
   },
   tags: [{ type: String }],
+  Image: {
+    type: String,
+    default:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcULRb2mBzuO_G146oOgWqemUIu-vr_kg3kg&usqp=CAU",
+  },
 });
 
 // Define the Post model

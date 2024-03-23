@@ -3,18 +3,19 @@ const Post = require("../DB/schema");
 const { v4: uuidv4 } = require("uuid");
 
 route.post("/newpost", async (req, res) => {
-  const { title, content, author } = req.body;
+  const { title, content } = req.body;
   console.log(req.body);
 
   // if (!title || !author || !) {
   //   return res.status(400).json({ msg: "Please All filed are required" });
   // }
-  const bookId = uuidv4(); //used for generation og userId
+  const pId = uuidv4(); //used for generation og userId
 
   let newPost = new Post({
     title,
     content,
-    author: bookId,
+    postId: pId,
+    author: "pramod",
   });
 
   await newPost.save();
@@ -22,8 +23,13 @@ route.post("/newpost", async (req, res) => {
   return res.status(200).json({ msg: "Post Added successfully" });
 });
 
-route.get("/posts", (req, res) => {
-  res.send("hii hoo");
+route.get("/posts", async (req, res) => {
+  try {
+    let posts = await Post.find();
+    return res.status(200).json(posts);
+  } catch (err) {
+    return res.status(500).json({ msg: err });
+  }
 });
 
 module.exports = route;

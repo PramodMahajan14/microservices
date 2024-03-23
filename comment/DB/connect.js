@@ -8,4 +8,4 @@ mongoose
   .then(() => {
     console.log("connection sucessfully");
   })
-  .catch((err) => console.log("connection faild : ", err));
+  .catch((err) => console.log("connection faild : "));
