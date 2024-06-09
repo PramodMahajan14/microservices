@@ -1,3 +1,4 @@
 ca.pem
 ca.pemZone.Identifier
 user
+.env
