@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(process.env.DBURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.mongodb_atlas_connection_string)
   .then(() => {
     console.log("connection sucessfully");
   })

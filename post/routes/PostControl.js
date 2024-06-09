@@ -23,6 +23,17 @@ route.post("/newpost", async (req, res) => {
   return res.status(200).json({ msg: "Post Added successfully" });
 });
 
+route.get("/like/:Id", async (req, res) => {
+  try {
+    await Post.findOneAndUpdate(
+      { postId: req.params.Id },
+      { $inc: { likes: 1 } }
+    );
+    return res.status(200).json("Liked!");
+  } catch (err) {
+    return res.status(500).json({ msg: `Error liking post:, ${err}` });
+  }
+});
 route.get("/posts", async (req, res) => {
   try {
     let posts = await Post.find();

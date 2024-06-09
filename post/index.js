@@ -15,7 +15,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("hiii");
+  res.send("Post-Service");
 });
 
 app.use("/post", require("./routes/PostControl"));

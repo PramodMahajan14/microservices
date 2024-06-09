@@ -1,5 +1,5 @@
 const express = require("express");
-require("dotenv").config();
+require("dotenv").config("../post/.env");
 const PORT = process.env.PORT || 4001;
 const app = express();
 require("./DB/connect");
@@ -15,7 +15,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("hiii");
+  res.send("Comment-Service");
 });
 
 app.use("/comment", require("./routes/CommentControl"));
